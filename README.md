@@ -26,5 +26,5 @@ result.
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/bac-grade-calculator.git
+https://github.com/BenkacemIbrahim/bac-grade-calculator.git
 cd bac-grade-calculator
