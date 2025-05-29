@@ -128,16 +128,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Baccalaureate Grade Result</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1501290741922-b56c0d0884af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-    </style>
+    <script src="script.js"></script>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-2xl bg-white bg-opacity-95 shadow-2xl rounded-3xl overflow-hidden backdrop-filter backdrop-blur-lg">
@@ -145,7 +138,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h1 class="text-3xl font-bold text-center">Baccalaureate Grade Result</h1>
             <p class="text-center mt-2 text-blue-100">Your final grade and subject performance</p>
         </div>
-
 
         <div class="p-8">
             <?php if (isset($error)): ?>
@@ -166,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
 
                     <div class="h-64">
-                        <canvas id="gradesChart"></canvas>
+                        <canvas id="gradesChart" data-grades='<?= json_encode($grades) ?>'></canvas>
                     </div>
 
                     <div class="bg-gray-100 rounded-lg p-4">
@@ -196,34 +188,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </a>
         </div>
     </div>
-
-    <?php if (isset($finalGrade)): ?>
-    <script>
-        const ctx = document.getElementById('gradesChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: <?= json_encode(array_keys($grades)) ?>,
-                datasets: [{
-                    label: 'Subject Grades',
-                    data: <?= json_encode(array_values($grades)) ?>,
-                    backgroundColor: 'rgba(59, 130, 246, 0.5)',
-                    borderColor: 'rgb(59, 130, 246)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 20
-                    }
-                }
-            }
-        });
-    </script>
-    <?php endif; ?>
 </body>
 </html>
-
