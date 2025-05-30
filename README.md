@@ -16,7 +16,7 @@ result.
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript
+- **Frontend:** HTML, CSS, Tailwind CSS, JavaScript
 - **Backend:** PHP
 - **Version Control:** Git
 
